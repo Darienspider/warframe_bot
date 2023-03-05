@@ -2,8 +2,7 @@ import requests
 import bs4
 import json
 
-def scan_warframe():
-    item_name = input("Please enter name of item: ")
+def scan_warframe(item_name):
     item_name = item_name.lower()
     item_name = str(item_name).replace(" ","_")
 
@@ -46,5 +45,13 @@ def scan_warframe():
     print(f'Average: {average_price}\nTotal Orders: {order_count}\nLowest Price: {lowest_price}\nHighest Price: {highest_price}')
 
 while True:
-    scan_warframe()
+    item_name = input("Please enter name of item: ")
+    if item_name.lower() == 'exit':
+        print("Terminating Warframe bot")
+        break
+    else:
+        try:
+            scan_warframe(item_name)
+        except:
+            print("Item not found, please try again")
     print("\n\n\n")
